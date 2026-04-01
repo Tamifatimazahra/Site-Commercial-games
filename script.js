@@ -4,9 +4,16 @@ for (let i = 0; i < games.length; i++) {
   cards.innerHTML += `
     <div class="bg-white p-4 rounded-xl shadow w-64  ">
       <img src="${games[i].image}" class="w-full h-40 object-cover rounded-lg mb-2">
+      <div  class="flex justify-between items-center mb-1">
       <h2 class="font-bold text-lg">${games[i].title}</h2>
+      <button onclick="addToCart('${games[i].title}')" class="mt-2">
+        <img src="photos/ajouter-au-panier.png" class="w-6 h-6">
+      </button>
+      
+      </div>
       <p class="text-gray-500">${games[i].category}</p>
-      <p class="text-blue-600 font-semibold">${games[i].price}</p>
-    </div>
+      <p class="text-blue-600 font-semibold">${games[i].price}$</p>
+       
+          </div>
   `;
 }

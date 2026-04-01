@@ -17,3 +17,21 @@ for (let i = 0; i < games.length; i++) {
           </div>
   `;
 }
+
+const searchInput = document.getElementById("search");
+
+searchInput.addEventListener("input", (e) => {
+  const term = e.target.value.toLowerCase();
+  
+  const cardsDivs = document.querySelectorAll("#cards > div"); // kol card li tgenerate
+
+  for (let i = 0; i < cardsDivs.length; i++) {
+    const title = cardsDivs[i].querySelector("h2").textContent.toLowerCase();
+    
+    if (title.includes(term)) {
+      cardsDivs[i].style.display = "block"; // ila kan , ban
+    } else {
+      cardsDivs[i].style.display = "none"; // ila makaynch, matbanch
+    }
+  }
+});

@@ -2,7 +2,7 @@ import {games} from './gamesDB.js';
 const cards=document.getElementById("cards");
 for (let i = 0; i < games.length; i++) {
   cards.innerHTML += `
-    <div class="bg-white p-4 rounded-xl shadow w-64  ">
+    <div class="bg-white p-4 rounded-xl shadow lg:w-64 w-[90%]  ">
       <img src="${games[i].image}" class="w-full h-40 object-cover rounded-lg mb-2">
       <div  class="flex justify-between items-center mb-1">
       <h2 class="font-bold text-lg">${games[i].title}</h2>
@@ -35,3 +35,8 @@ searchInput.addEventListener("input", (e) => {
     }
   }
 });
+
+function filterCategory(cat) {
+  const filtered = games.filter(game => game.category === cat);
+  displayGames(filtered);
+}

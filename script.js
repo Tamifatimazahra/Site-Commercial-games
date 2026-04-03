@@ -202,12 +202,30 @@ function Sportcategory(){
 
 
 
-export function localitems(){
-  localStorage.setItem("sac" , JSON.stringify(games))
-  }
-  export function getitems(){
-    if(localStorage.getItem("sac")){
-      let games =JSON.parse(localStorage.getItem("sac"))
-    }
-  }
+
+
+
+
+// export function localitems(){
+// Show alert when adding to cart
+function addToCart(title) {
+  alert("ajouter au panier");
+  // Find the game by title
+  const game = games.find(g => g.title === title);
+  if (!game) return;
+  // Get current cart from localStorage
+  let cart = JSON.parse(localStorage.getItem('panier')) || [];
+  cart.push(game);
+  localStorage.setItem('panier', JSON.stringify(cart));
+}
+window.addToCart = addToCart;
+// Make addToCart available globally for inline onclick
+window.addToCart = addToCart;
+//   localStorage.setItem("sac" , JSON.stringify(games))
+//   }
+//   export function getitems(){
+//     if(localStorage.getItem("sac")){
+//       let games =JSON.parse(localStorage.getItem("sac"))
+//     }
+//   }
   

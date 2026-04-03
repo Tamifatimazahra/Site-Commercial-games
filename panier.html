@@ -8,16 +8,14 @@
 
 </head>
 <body>
-      <header class="bg-cyan-400 text-white p-4 flex  justify-between">
-        <h1 class="text-xl font-bold">site-Games.com</h1>
-        <div class="flex ">
-            <img src="photos/panier.png" alt="panier">
-            <img src="photos/utilisateur.png" alt="">
-        </div>
+    <header class="bg-cyan-400 text-white p-4 flex justify-between">
+        <h1 class="text-xl font-bold">Votre Panier</h1>
+        <a href="index.html" class="underline">Retour à la boutique</a>
     </header>
-    <h1 class="flex justify-center font-bold text-xl">panier</h1>
-
-    <script type="module" src="script.js"></script>
-
+    <main class="p-6">
+        <div id="panier-cards" class="flex flex-wrap gap-6 justify-center"></div>
+        <div id="empty-message" class="text-center text-gray-500 mt-10 hidden">Votre panier est vide.</div>
+    </main>
+    <script type="module" src="panier.js"></script>
 </body>
 </html>

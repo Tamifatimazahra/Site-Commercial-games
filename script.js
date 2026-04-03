@@ -209,7 +209,6 @@ function Sportcategory(){
 // export function localitems(){
 // Show alert when adding to cart
 function addToCart(title) {
-  alert("ajouter au panier");
   // Find the game by title
   const game = games.find(g => g.title === title);
   if (!game) return;

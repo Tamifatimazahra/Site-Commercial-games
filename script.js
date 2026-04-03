@@ -215,7 +215,19 @@ function addToCart(title) {
   if (!game) return;
   // Get current cart from localStorage
   let cart = JSON.parse(localStorage.getItem('panier')) || [];
-  cart.push(game);
+  // Check if game already in cart
+  let found = false;
+  for (let i = 0; i < cart.length; i++) {
+    if (cart[i].title === title) {
+      cart[i].quantite = (cart[i].quantite || 1) + 1;
+      found = true;
+      break;
+    }
+  }
+  if (!found) {
+    // Add quantite property
+    cart.push({ ...game, quantite: 1 });
+  }
   localStorage.setItem('panier', JSON.stringify(cart));
 }
 window.addToCart = addToCart;

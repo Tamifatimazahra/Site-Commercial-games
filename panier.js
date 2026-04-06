@@ -21,7 +21,6 @@ function renderCart() {
         <img src="${item.image}" class="w-[150px] rounded-lg mb-2">
         <div>
           <h2 class="font-bold text-lg mb-2">${item.title}</h2>
-          <p class="text-gray-500 mb-1">${item.category}</p>
           <p class="text-blue-600 font-semibold mb-2">${item.price}$</p>
           <p>Quantité</p>
           <div class="bg-stone-200 w-[65px] ">

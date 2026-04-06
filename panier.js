@@ -24,7 +24,7 @@ function renderCart() {
           <p class="text-gray-500 mb-1">${item.category}</p>
           <p class="text-blue-600 font-semibold mb-2">${item.price}$</p>
           <p>Quantité</p>
-          <div class="bg-stone-200 w-[65px]">
+          <div class="bg-stone-200 w-[65px] ">
             <button class="plus-btn w-[20px]" data-index="${i}"> + </button>
             <span>${item.quantite || 1}</span>
             <button class="moins-btn w-[20px]" data-index="${i}"> - </button>

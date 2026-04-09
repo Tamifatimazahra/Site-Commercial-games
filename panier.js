@@ -4,20 +4,27 @@
 // Retrieve cart items from localStorage
 const panierCards = document.getElementById('panier-cards');
 const emptyMessage = document.getElementById('empty-message');
+// ------------------1  Récupération des éléments du panier depuis localStorage-------------------------------
 
 let cart = JSON.parse(localStorage.getItem('panier')) || [];
-
+// ------------------------2 Fonction principale pour afficher le contenu du panier--------------------------------------
 function renderCart() {
+  
   panierCards.innerHTML = '';
+
+
+
   if (cart.length === 0) {
     emptyMessage.classList.remove('hidden');
     return;
   }
   emptyMessage.classList.add('hidden');
+  //  ---------------------3 afficher chaque jeu dans le panier--------------------
+
   for (let i = 0; i < cart.length; i++) {
     const item = cart[i];
     panierCards.innerHTML += `
-      <div class="bg-white p-4 border-black rounded-xl shadow flex justify-between gap-4">
+      <div class=" divdelete bg-white p-4 border-black rounded-xl shadow flex justify-between gap-4">
         <img src="${item.image}" class="w-[150px] rounded-lg mb-2">
         <div>
           <h2 class="font-bold text-lg mb-2">${item.title}</h2>
@@ -29,13 +36,14 @@ function renderCart() {
             <button class="moins-btn w-[20px]" data-index="${i}"> - </button>
           </div>
         </div>
-        <button class="mt-2">
-          <img src="photos/poubelle-de-recyclage.png" class="w-6 h-6">
+        <button class="delete-btn mt-2" data-index="${i}">
+          <img src="photos/poubelle-de-recyclage.png" class="deleteimg w-6 h-6">
         </button>
       </div>
     `;
   }
-  // Add event listeners for plus and moins buttons using a simple for loop
+
+// -----------------------------4 Gestion des boutons pour augmenter la quantité ---------------------------
   const plusBtns = document.querySelectorAll('.plus-btn');
   const moinsBtns = document.querySelectorAll('.moins-btn');
   for (let j = 0; j < plusBtns.length; j++) {
@@ -59,3 +67,19 @@ function renderCart() {
 }
 
 renderCart();
+
+// -----------------------------5 Gestion du bouton supprimer (delete) ---------------------------
+panierCards.onclick = function(e) {
+
+  if (e.target.closest('.delete-btn')) {
+
+    const btn = e.target.closest('.delete-btn');
+    const idx = parseInt(btn.getAttribute('data-index'));
+
+    cart.splice(idx, 1);
+
+    localStorage.setItem('panier', JSON.stringify(cart));
+
+    renderCart();
+  }
+};

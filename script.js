@@ -1,5 +1,6 @@
 import {games} from './gamesDB.js';
 const cards=document.getElementById("cards");
+// ------------1 afficher tout les jeux-----------------------------
 for (let i = 0; i < games.length; i++) {
   cards.innerHTML += `
     <div class="bg-white p-4 rounded-xl shadow lg:w-64 w-[90%]  ">
@@ -17,7 +18,7 @@ for (let i = 0; i < games.length; i++) {
           </div>
   `;
 }
-
+// ---------------2 recherche pour filtrer les cartes par titre------------------------
 const searchInput = document.getElementById("search");
 
 searchInput.addEventListener("input", (e) => {
@@ -37,7 +38,7 @@ searchInput.addEventListener("input", (e) => {
 });
 
 
-
+// ------------------------3 Filtrage des jeux par catégories via boutons------------------------------
 
 let RPG=document.getElementById("RPG");
 RPG.onclick=function(){
@@ -177,37 +178,8 @@ function Sportcategory(){
   }
 }
 
+//----------------------4 Ajouter un jeu au panier avec stockage dans localStorage----------------------------------
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// export function localitems(){
-// Show alert when adding to cart
 function addToCart(title) {
   // Find the game by title
   const game = games.find(g => g.title === title);
@@ -229,14 +201,18 @@ function addToCart(title) {
   }
   localStorage.setItem('panier', JSON.stringify(cart));
 }
+// ---------------------5 Rendre la fonction addToCart disponible globalement pour onclick dans le HTML-------------------------------
+
 window.addToCart = addToCart;
-// Make addToCart available globally for inline onclick
-window.addToCart = addToCart;
-//   localStorage.setItem("sac" , JSON.stringify(games))
-//   }
-//   export function getitems(){
-//     if(localStorage.getItem("sac")){
-//       let games =JSON.parse(localStorage.getItem("sac"))
-//     }
-//   }
-  
+
+
+
+function addToCart(title){
+  const game=games.find(g=>g.title===title);
+  if(!game) return;
+  for(let i=0;cart.length;i++){
+    if(cart[i].title===title){
+      cart[i].quantite=
+    }
+  }
+}

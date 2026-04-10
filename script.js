@@ -21,8 +21,8 @@ for (let i = 0; i < games.length; i++) {
 // ---------------2 recherche pour filtrer les cartes par titre------------------------
 const searchInput = document.getElementById("search");
 
-searchInput.addEventListener("input", (e) => {
-  const term = e.target.value.toLowerCase();
+searchInput.addEventListener("input", () => {
+  const term = searchInput.value.toLowerCase();
   
   const cardsDivs = document.querySelectorAll("#cards > div"); // kol card li tgenerate
 
@@ -85,7 +85,7 @@ function Actioncategory(){
       <div  class="flex justify-between items-center mb-1">
       <h2 class="font-bold text-lg">${games[i].title}</h2>
       <button onclick="addToCart('${games[i].title}')" class="mt-2">
-        <img src="photos/ajouter-au-panier.png" class="w-6 h-6">
+        <img src="photos/ajouter-au-panier.png" class="add-panier w-6 h-6">
       </button>
       
       </div>
@@ -181,12 +181,9 @@ function Sportcategory(){
 //----------------------4 Ajouter un jeu au panier avec stockage dans localStorage----------------------------------
 
 function addToCart(title) {
-  // Find the game by title
   const game = games.find(g => g.title === title);
   if (!game) return;
-  // Get current cart from localStorage
   let cart = JSON.parse(localStorage.getItem('panier')) || [];
-  // Check if game already in cart
   let found = false;
   for (let i = 0; i < cart.length; i++) {
     if (cart[i].title === title) {
@@ -196,7 +193,6 @@ function addToCart(title) {
     }
   }
   if (!found) {
-    // Add quantite property
     cart.push({ ...game, quantite: 1 });
   }
   localStorage.setItem('panier', JSON.stringify(cart));
@@ -207,12 +203,3 @@ window.addToCart = addToCart;
 
 
 
-function addToCart(title){
-  const game=games.find(g=>g.title===title);
-  if(!game) return;
-  for(let i=0;cart.length;i++){
-    if(cart[i].title===title){
-      cart[i].quantite=
-    }
-  }
-}
